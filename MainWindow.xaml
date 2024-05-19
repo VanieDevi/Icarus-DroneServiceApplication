@@ -1,0 +1,73 @@
+﻿<Window x:Class="Icarus.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:wpfx="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:local="clr-namespace:Icarus"   
+        mc:Ignorable="d"
+        Title="Drone Service Centre" Height="849" Width="1050" SizeToContent="WidthAndHeight">
+
+    <Grid x:Name="ServiceProblem" Margin="0,0,66,57">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="0*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="420*"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="DroneDetailsLabel" Content="Drone Details" HorizontalAlignment="Left" Height="28" Margin="27,3,0,0" VerticalAlignment="Top" Width="150" FontSize="16" FontWeight="Bold" FontFamily="Arial Black" Grid.Column="1"/>
+        <Label x:Name="ServiceLabel" Content="Regular Sevice Queue" HorizontalAlignment="Left" Margin="325,61,0,0" VerticalAlignment="Top" Width="240" FontWeight="Bold" FontSize="16" FontFamily="Arial Black" Grid.Column="1" Height="26"/>
+        <Label x:Name="FinishedLabel" Content="Finished Items" HorizontalAlignment="Left" Margin="328,531,0,0" VerticalAlignment="Top" Height="25" Width="205" FontWeight="Bold" FontFamily="Arial Black" FontSize="16" Grid.Column="1"/>
+        <TextBox x:Name="ClientName_TxtBox" HorizontalAlignment="Left" Margin="27,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" Grid.Column="1" Height="35" FontSize="14"/>
+        <TextBox x:Name="DroneModelTxtBox" HorizontalAlignment="Left" Margin="27,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" Grid.Column="1" Height="34" FontSize="14"/>
+        <TextBox x:Name="ServiceProblemTxtBox" HorizontalAlignment="Left" Margin="27,221,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" Height="79" Grid.Column="1" FontSize="14" AcceptsReturn="True"/>
+        <TextBox x:Name="ServiceCostTxtBox" HorizontalAlignment="Left" Margin="27,346,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" RenderTransformOrigin="0.554,-0.184" Grid.Column="1" Height="32" FontSize="14"/>
+        <RadioButton x:Name="RegularRdoBtn" Content="Regular" HorizontalAlignment="Left" Margin="44,497,0,0" VerticalAlignment="Top" GroupName="Service" Grid.Column="1" Height="28" Width="75" FontSize="14"/>
+        <RadioButton x:Name="ExpressRdoBtn" Content="Express" HorizontalAlignment="Left" Margin="163,497,0,0" VerticalAlignment="Top" GroupName="Service" Grid.Column="1" Height="28" Width="75" FontSize="14"/>
+        <Button x:Name="FinishBtn1" Content="Finished" HorizontalAlignment="Left" Margin="697,60,0,0" VerticalAlignment="Top" Grid.Column="1" Height="27" Width="80" FontSize="14" FontWeight="Bold" Click="FinishBtn1_Click"/>
+        <ListView x:Name="LVRegular" Grid.Column="1" Margin="331,92,37,542" FontSize="14" Height="142.04" SelectionChanged="LVRegular_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Service Tag" Width="130" DisplayMemberBinding="{Binding ServiceTag}"/>
+                    <GridViewColumn Header="Client Name" Width="130" DisplayMemberBinding="{Binding ClientName}"/>
+                    <GridViewColumn Header="Drone Model" Width="130" DisplayMemberBinding="{Binding DroneModel}"/>
+                    <GridViewColumn Header="Service Cost" Width="130" DisplayMemberBinding="{Binding ServiceCost}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label x:Name="ExpressLabel" Grid.Column="1" Content="Express Service Queue" HorizontalAlignment="Left" Margin="328,299,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" FontFamily="Arial Black" Height="27" Width="247"/>
+        <Button x:Name="FinishBtn2" Grid.Column="1" Content="Finished" HorizontalAlignment="Left" Margin="697,296,0,0" VerticalAlignment="Top" Height="27" Width="80" FontSize="14" FontWeight="Bold" Click="FinishBtn2_Click"/>
+        <ListView x:Name="LVExpress" Grid.Column="1" Margin="331,294,37,259" FontSize="14" Height="142.04" SelectionChanged="LVExpress_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Service Tag" Width="130" DisplayMemberBinding="{Binding ServiceTag}"/>
+                    <GridViewColumn Header="Client Name" Width="130" DisplayMemberBinding="{Binding ClientName}"/>
+                    <GridViewColumn Header="Drone Model" Width="130" DisplayMemberBinding="{Binding DroneModel}"/>
+                    <GridViewColumn Header="Service Cost" Width="130" DisplayMemberBinding="{Binding ServiceCost}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListBox x:Name="LBoxFinish" Margin="331,517,37,36" Grid.Column="1" FontSize="14" MouseDoubleClick="LBoxFinish_MouseDoubleClick" Height="142.04">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding ServiceTag}" Width="130"/>
+                        <TextBlock Text="{Binding ClientName}" Width="130"/>
+                        <TextBlock Text="{Binding DroneModel}" Width="130"/>
+                        <TextBlock Text="{Binding ServiceCost}" Width="130"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button x:Name="AddBtn" Content="Add Drone For Service" HorizontalAlignment="Left" Margin="27,573,0,0" VerticalAlignment="Top" Grid.Column="1" Click="AddBtn_Click" TabIndex="3" Height="40" Width="223" FontSize="14" FontWeight="Bold"/>
+        <Button x:Name="ExitBtn" Grid.Column="1" Content="Exit" HorizontalAlignment="Left" Margin="27,605,0,50" Width="223" Click="ExitBtn_Click" FontSize="14" FontWeight="Bold" Height="40"/>
+        <wpfx:IntegerUpDown x:Name="ServiceTag" Width="223" Height="30" Minimum="100" Maximum="900" Increment="10" HorizontalAlignment="Left" Margin="27,433,0,0" VerticalAlignment="Top" Grid.Column="1" FontSize="14" Text="100" IsReadOnly="True" />
+        <Label x:Name="lServiceTag" Grid.Column="1" Content="Last Service Tag" HorizontalAlignment="Left" Margin="24,407,0,0" VerticalAlignment="Top" Width="114" FontSize="14"/>
+        <Label x:Name="lServiceTag_Copy" Grid.Column="1" Content="Client Name" HorizontalAlignment="Left" Margin="24,37,0,0" VerticalAlignment="Top" Width="114" FontSize="14"/>
+        <Label x:Name="lServiceTag_Copy1" Grid.Column="1" Content="Drone Model" HorizontalAlignment="Left" Margin="24,120,0,0" VerticalAlignment="Top" Width="114" FontSize="14"/>
+        <Label x:Name="lServiceTag_Copy2" Grid.Column="1" Content="Service Problem" HorizontalAlignment="Left" Margin="24,197,0,0" VerticalAlignment="Top" Width="114" FontSize="14"/>
+        <Label x:Name="lServiceTag_Copy3" Grid.Column="1" Content="Service Cost" HorizontalAlignment="Left" Margin="24,322,0,0" VerticalAlignment="Top" Width="114" FontSize="14"/>
+    </Grid>
+</Window>

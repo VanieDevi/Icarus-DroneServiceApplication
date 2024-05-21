@@ -61,7 +61,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button x:Name="AddBtn" Content="Add Drone For Service" HorizontalAlignment="Left" Margin="27,573,0,0" VerticalAlignment="Top" Grid.Column="1" Click="AddBtn_Click" TabIndex="3" Height="40" Width="223" FontSize="14" FontWeight="Bold"/>
+        <Button x:Name="AddBtn" Content="Add Drone For Service" HorizontalAlignment="Left" Margin="27,573,0,0" VerticalAlignment="Top" Grid.Column="1" PreviewMouseDown="AddBtn_PreviewMouseDown" TabIndex="3" Height="40" Width="223" FontSize="14" FontWeight="Bold"/>
         <Button x:Name="ExitBtn" Grid.Column="1" Content="Exit" HorizontalAlignment="Left" Margin="27,605,0,50" Width="223" Click="ExitBtn_Click" FontSize="14" FontWeight="Bold" Height="40"/>
         <wpfx:IntegerUpDown x:Name="ServiceTag" Width="223" Height="30" Minimum="100" Maximum="900" Increment="10" HorizontalAlignment="Left" Margin="27,433,0,0" VerticalAlignment="Top" Grid.Column="1" FontSize="14" Text="100" IsReadOnly="True" />
         <Label x:Name="lServiceTag" Grid.Column="1" Content="Last Service Tag" HorizontalAlignment="Left" Margin="24,407,0,0" VerticalAlignment="Top" Width="114" FontSize="14"/>

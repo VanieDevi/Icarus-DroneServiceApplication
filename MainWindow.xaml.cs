@@ -9,7 +9,7 @@ namespace Icarus
 {
     // Vanie Devi Srinivasan
     // Date: 18/05/2024
-     // Version: 1.0
+    // Version: 1.0
     // Name of the program:  The Service Application
     // Description: This Service application is for Icarus Pty Ltd to be used by front desk staff to log drones for service and repair.
     // This app enables the user to enter the drone details and add to the specified servicy delivery queue and added to the finished queue once the service is completed.
@@ -79,7 +79,7 @@ namespace Icarus
         }
     
         // To add the service details to the regular or express service queue.
-        private void AddBtn_Click(object sender, RoutedEventArgs e)
+        private void AddBtn_PreviewMouseDown(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(ClientName_TxtBox.Text) &&
                 !string.IsNullOrEmpty(DroneModelTxtBox.Text) &&
@@ -195,81 +195,19 @@ namespace Icarus
         //Finish Button 1: Details of the finished service in the regular queue added to the finshed queue
         private void FinishBtn1_Click(object sender, RoutedEventArgs e)
         {
-            if (LVRegular.SelectedIndex != -1)
-            {
-                int indx = LVRegular.SelectedIndex;
-
-                var result = MessageBox.Show("Regular Service Finished - Service Tag:" + RegularServiceQueue.ElementAt(indx).GetServiceTag().ToString(), "Service Completion Confirmation!", MessageBoxButton.OKCancel, MessageBoxImage.Question);
-
-                if (result == MessageBoxResult.OK)
-                {
-                    Drone drone = RegularServiceQueue.ElementAt(indx);
-                    FinishedDrones.Add(drone);
-
-                    Queue<Drone> tmpRegularServiceQueue = new Queue<Drone>();
-
-                    foreach (Drone tDrone in RegularServiceQueue)
-                    {
-                        if (tDrone.GetServiceTag() != drone.GetServiceTag())
-                        {
-                            tmpRegularServiceQueue.Enqueue(tDrone);
-                        }
-                    }
-
-                    RegularServiceQueue.Clear();
-
-                    foreach (Drone tDrone in tmpRegularServiceQueue)
-                    {
-                        RegularServiceQueue.Enqueue(tDrone);
-                    }
-
-                    tmpRegularServiceQueue.Clear();
-
-                    DisplayAllService();
-
-                    ClearTextBoxes();
-                }
-            }
+            Drone drone = RegularServiceQueue.Dequeue();
+            FinishedDrones.Add(drone);
+            DisplayAllService();
+            ClearTextBoxes();
         }
 
         // Finish Button 2: Details of the finished service in the express queue added to the finshed queue
         private void FinishBtn2_Click(object sender, RoutedEventArgs e)
         {
-            if (LVExpress.SelectedIndex != -1)
-            {
-                int indx = LVExpress.SelectedIndex;
-
-                var result = MessageBox.Show("Express Service Finished - Service Tag:" + ExpressServiceQueue.ElementAt(indx).GetServiceTag().ToString(), "Service Completion Confirmation!", MessageBoxButton.OKCancel, MessageBoxImage.Question);
-
-                if (result == MessageBoxResult.OK)
-                {
-                    Drone drone = ExpressServiceQueue.ElementAt(indx);
-                    FinishedDrones.Add(drone);
-
-                    Queue<Drone> tmpExpressServiceQueue = new Queue<Drone>();
-
-                    foreach (Drone tDrone in ExpressServiceQueue)
-                    {
-                        if (tDrone.GetServiceTag() != drone.GetServiceTag())
-                        {
-                            tmpExpressServiceQueue.Enqueue(tDrone);
-                        }
-                    }
-
-                    ExpressServiceQueue.Clear();
-
-                    foreach (Drone tDrone in tmpExpressServiceQueue)
-                    {
-                        ExpressServiceQueue.Enqueue(tDrone);
-                    }
-
-                    tmpExpressServiceQueue.Clear();
-
-                    DisplayAllService();
-
-                    ClearTextBoxes();
-                }
-            }
+            Drone drone = ExpressServiceQueue.Dequeue();
+            FinishedDrones.Add(drone);
+            DisplayAllService();
+            ClearTextBoxes();
         }
 
         // Double mouse click method to delete a service item from the finished listbox and remove the same item from the List.

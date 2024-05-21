@@ -2,14 +2,22 @@
 
 namespace Icarus
 {
+    // Vanie Devi Srinivasan
+    // Date: 18/05/2024
+    // Version: 1.0
+    // Name of the program:  Drone
+    // Description: Drone class that stores the properties of Drone with get & set methods.
+
     public class Drone
     {
+        //Private Attributes
         private string ClientName { get; set; }
         private string DroneModel { get; set; }
         private string? ServiceProblem { get; set; }
         private double ServiceCost { get; set; }
         private int ServiceTag { get; set; }
 
+        //Default Constructor
         public Drone() 
         {
             ClientName = "";
@@ -28,6 +36,7 @@ namespace Icarus
             ServiceTag = serviceTag;
         }
 
+        //Assessor Methods
         public string GetClientName()
         {
             return ClientName;

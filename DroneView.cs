@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace Icarus
 {
+    // Vanie Devi Srinivasan
+    // Date: 18/05/2024
+    // Version: 1.0
+    // Name of the program:  Drone
+    // Description: Drone View class that to access Drone properties in readonly mode.
+
     public class DroneView
     {
         private readonly Drone drone;

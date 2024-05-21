@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Icarus.App">
+    <Position X="3.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Icarus.Drone">
+    <Position X="5.5" Y="1" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>CAAIAgAAAAAAEAAhAAIACAAAAEAABAAAQAAQBAAEAEA=</HashCode>
+      <FileName>Drone.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Icarus.DroneView">
+    <Position X="7.75" Y="1" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>CAAIAAAAAAAAAAAAAAAAAAAAgAAAAAAAQAAQBAAAAAA=</HashCode>
+      <FileName>DroneView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Icarus.MainWindow" BaseTypeListCollapsed="true">
+    <Position X="10" Y="1" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAQGAAANAEABEAAQEAAAABAAAAAgAIAIQAAAAACCAAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
